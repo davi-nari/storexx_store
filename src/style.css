@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import '@/assets/fonts/fonts.css';
+@import './assets/fonts/fonts.css';
 
 @theme {
   --font-sans: 'Manrope', sans-serif;
