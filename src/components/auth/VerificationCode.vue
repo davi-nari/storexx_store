@@ -53,7 +53,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const pushRouter = () => {
-  router.push("/profile");
+  router.push("/account/details");
 };
 </script>
 
