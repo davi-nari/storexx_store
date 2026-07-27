@@ -4,7 +4,11 @@
 
     <nav>
       <ul class="flex flex-col gap-4">
-        <li v-for="item in menuItems" :key="item.label" class="-translate-x-4">
+        <li
+          v-for="item in visibleMenuItems"
+          :key="item.label"
+          class="-translate-x-4"
+        >
           <RouterLink
             :to="item.to"
             class="flex items-center gap-5 rounded-lg px-4 py-2 font-semibold transition-colors duration-200 hover:bg-gray-100 hover:text-black"
@@ -24,6 +28,7 @@
             @click="handleLogout"
           >
             <LogOut />
+
             <span>Выйти</span>
           </button>
         </li>
@@ -33,17 +38,26 @@
 </template>
 
 <script setup>
+import { computed } from "vue";
+import { useRouter } from "vue-router";
+
+import { useAuthStore } from "@/stores/auth.js";
+
 import User from "@/assets/icons/user.svg";
 import Key from "@/assets/icons/key.svg";
 import Order from "@/assets/icons/order.svg";
 import Location from "@/assets/icons/location.svg";
 import LogOut from "@/assets/icons/logout.svg";
 
+const router = useRouter();
+const authStore = useAuthStore();
+
 const menuItems = [
   {
     label: "Панель управления",
-    to: "/account",
+    to: "/admin",
     icon: Key,
+    adminOnly: true,
   },
   {
     label: "Личные данные",
@@ -62,7 +76,20 @@ const menuItems = [
   },
 ];
 
-const handleLogout = () => {};
+const visibleMenuItems = computed(() =>
+  menuItems.filter((item) => {
+    if (item.adminOnly) {
+      return authStore.isAdmin;
+    }
+
+    return true;
+  })
+);
+
+async function handleLogout() {
+  authStore.logout();
+  await router.replace("/auth");
+}
 </script>
 
 <style scoped>

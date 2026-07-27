@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { useAuthStore } from "@/stores/auth.js";
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -8,16 +9,24 @@ export const router = createRouter({
       name: "Auth",
       path: "/auth",
       component: () => import("@/Pages/AuthPage.vue"),
+      meta: {
+        guestOnly: true,
+      },
     },
     {
       name: "AuthVerify",
       path: "/auth/verify",
       component: () => import("@/Pages/VerifyEmailPage.vue"),
+      meta: {
+        guestOnly: true,
+      },
     },
     {
       path: "/account",
       component: () => import("@/Pages/account/AccountPage.vue"),
-
+      meta: {
+        requiresAuth: true,
+      },
       children: [
         {
           path: "",
@@ -41,4 +50,25 @@ export const router = createRouter({
       ],
     },
   ],
+});
+
+router.beforeEach((to) => {
+  const authStore = useAuthStore();
+
+  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+    return {
+      name: "Auth",
+      query: {
+        redirect: to.fullPath,
+      },
+    };
+  }
+
+  if (to.meta.guestOnly && authStore.isAuthenticated) {
+    return {
+      name: "account-details",
+    };
+  }
+
+  return true;
 });
