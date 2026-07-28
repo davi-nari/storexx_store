@@ -1,9 +1,9 @@
 <template>
-  <aside class="max-w-sm w-full">
+  <aside class="max-w-sm w-full self-start">
     <h1 class="mb-6 text-3xl font-semibold">Личные данные</h1>
 
     <nav>
-      <ul class="flex flex-col max-w-[80%] gap-4">
+      <ul class="flex flex-col max-w-[80%] gap-6">
         <li
           v-for="item in visibleMenuItems"
           :key="item.label"
@@ -83,7 +83,7 @@ const visibleMenuItems = computed(() =>
     }
 
     return true;
-  }),
+  })
 );
 
 async function handleLogout() {
