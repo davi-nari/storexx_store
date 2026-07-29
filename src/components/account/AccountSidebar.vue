@@ -3,7 +3,7 @@
     <h1 class="mb-6 text-3xl font-semibold">Личные данные</h1>
 
     <nav>
-      <ul class="flex flex-col max-w-[80%] gap-6">
+      <ul class="flex flex-col max-w-[85%] gap-6">
         <li
           v-for="item in visibleMenuItems"
           :key="item.label"
@@ -43,11 +43,7 @@ import { useRouter } from "vue-router";
 
 import { useAuthStore } from "@/stores/auth.js";
 
-import User from "@/assets/icons/user.svg";
-import Key from "@/assets/icons/key.svg";
-import Order from "@/assets/icons/order.svg";
-import Location from "@/assets/icons/location.svg";
-import LogOut from "@/assets/icons/logout.svg";
+import { UserPen, ClipboardCheck, MapPin, Key, LogOut } from "@lucide/vue";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -62,17 +58,17 @@ const menuItems = [
   {
     label: "Личные данные",
     to: { name: "account-details" },
-    icon: User,
+    icon: UserPen,
   },
   {
     label: "Заказы",
     to: { name: "account-orders" },
-    icon: Order,
+    icon: ClipboardCheck,
   },
   {
     label: "Адреса",
     to: { name: "account-addresses" },
-    icon: Location,
+    icon: MapPin,
   },
 ];
 

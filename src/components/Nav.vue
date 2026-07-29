@@ -37,7 +37,7 @@
         class="p-4 cursor-pointer rounded-full transition-colors duration-200 hover:bg-gray-100"
       >
         <RouterLink :to="action.to">
-          <component :is="action.icon" />
+          <component :is="action.icon" :size="28" />
         </RouterLink>
       </li>
     </ul>
@@ -46,9 +46,9 @@
 
 <script setup>
 import Logo from "@/assets/icons/logo.svg";
-import Search from "@/assets/icons/search.svg";
-import User from "@/assets/icons/user.svg";
-import Bag from "@/assets/icons/bag.svg";
+import { Search } from "@lucide/vue";
+import { User } from "@lucide/vue";
+import { ShoppingBag } from "@lucide/vue";
 
 const navigation = [
   {
@@ -81,7 +81,7 @@ const actions = [
   },
   {
     to: "/cart",
-    icon: Bag,
+    icon: ShoppingBag,
   },
 ];
 </script>

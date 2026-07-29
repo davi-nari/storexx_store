@@ -7,17 +7,17 @@
           <ul class="flex flex-col gap-6">
             <li>
               <RouterLink to="" class="font-medium flex items-center gap-6"
-                ><Tel />+998 71 235 11 99</RouterLink
+                ><Phone />+998 71 235 11 99</RouterLink
               >
             </li>
             <li>
               <RouterLink to="" class="font-medium flex items-center gap-6"
-                ><Email />info@storexx.uz</RouterLink
+                ><Mail />info@storexx.uz</RouterLink
               >
             </li>
             <li>
               <RouterLink to="" class="font-medium flex items-center gap-6"
-                ><Location />Узбекистан, Ташкент ул. Амира Темура 60</RouterLink
+                ><MapPin />Узбекистан, Ташкент ул. Амира Темура 60</RouterLink
               >
             </li>
           </ul>
@@ -74,7 +74,9 @@
           </ul>
         </div>
       </div>
-      <div class="flex items-center gap-6 justify-between border-t-2 border-gray-300 pt-10 mt-13">
+      <div
+        class="flex items-center gap-6 justify-between border-t-2 border-gray-300 pt-10 mt-13"
+      >
         <p class="text-sm text-gray-600">2026 STORE XX. Все права защищены.</p>
         <ul class="flex items-center gap-6">
           <li>
@@ -99,9 +101,7 @@
 </template>
 
 <script setup>
-import Tel from "@/assets/icons/tel.svg";
-import Email from "@/assets/icons/email.svg";
-import Location from "@/assets/icons/location.svg";
+import { MapPin, Phone, Mail } from "@lucide/vue";
 import Instagram from "@/assets/icons/instagram.svg";
 import Telegram from "@/assets/icons/telegram.svg";
 import Facebook from "@/assets/icons/facebook.svg";
